@@ -1,0 +1,23 @@
+name: PyOD Anomaly Detection Component
+description: Perform anomaly detection on text data using PyOD and Sentence Transformers.
+
+inputs:
+  - {name: input_data,       type: String,  default: 'data/combined_sentences.csv', description: 'Path to input data file (.csv or .parquet)'}
+  - {name: embedding_model,  type: String,  default: 'intfloat/e5-large-v2',        description: 'Sentence Transformer embedding model to use'}
+  - {name: pyod_model,       type: String,  default: 'ECOD',                      description: 'PyOD model to use (e.g., OCSVM, KDE, KNN, ECOD)'}
+  - {name: output_dir,       type: String,  default: './model_output',             description: 'Directory to save the model output'}
+
+outputs:
+  - {name: anomalies,        type: String,  description: 'Path to JSON file containing detected anomalies'}
+
+implementation:
+  container:
+    image: waleriank/pyod:latest
+    command: [python]
+    args: [
+      'components/pyod/src/anomaly_detection.py',
+      --input-data,  {inputValue: input_data},
+      --embedding-model,  {inputValue: embedding_model},
+      --pyod-model,  {inputValue: pyod_model},
+      --output-dir,  {inputValue: output_dir}
+    ]
