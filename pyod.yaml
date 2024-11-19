@@ -15,7 +15,7 @@ implementation:
     image: waleriank/pyod:latest
     command: [python]
     args: [
-      'components/pyod/src/anomaly_detection.py',
+      'anomaly_detection.py',
       --input-data,  {inputValue: input_data},
       --embedding-model,  {inputValue: embedding_model},
       --pyod-model,  {inputValue: pyod_model},
