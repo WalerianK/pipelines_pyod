@@ -24,7 +24,7 @@ outputs:
 
 implementation:
   container:
-    image: waleriank/pyod_trainer:9
+    image: waleriank/pyod_trainer:10
     command: 
       - 'python'
     args:
