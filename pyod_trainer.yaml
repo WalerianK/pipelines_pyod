@@ -8,11 +8,12 @@ inputs:
   - {name: output_dir,      type: String,  default: './model_output',          description: 'Directory to save the trained model'}
 
 outputs:
-  - {name: trained_model,   type: String, description: 'Path to the saved trained model file'}
+  - {name: trained_model,   type: String,  description: 'Path to the saved trained model file'}
+  - {name: metadata_file,   type: String,  description: 'Path to the metadata.yaml file'}
 
 implementation:
   container:
-    image: waleriank/pyod_trainer:1
+    image: waleriank/pyod:latest
     command: ['python']
     args: [
       'train_anom_model.py',
