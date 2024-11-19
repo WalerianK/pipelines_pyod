@@ -1,0 +1,23 @@
+name: PyOD Model Training Component
+description: Train a PyOD anomaly detection model on text data using Sentence Transformer embeddings.
+
+inputs:
+  - {name: input_data,      type: String,  default: 'data/input_text_data.csv', description: 'Path to input data file (.csv, .parquet, .json) or a URL pointing to such a file'}
+  - {name: embedding_model, type: String,  default: 'intfloat/e5-large-v2',    description: 'Sentence Transformer embedding model to use'}
+  - {name: pyod_model,      type: String,  default: 'ECOD',                    description: 'PyOD model to use (e.g., OCSVM, KDE, KNN, ECOD, LUNAR, DIF, SO_GAAL, AnoGAN)'}
+  - {name: output_dir,      type: String,  default: './model_output',          description: 'Directory to save the trained model'}
+
+outputs:
+  - {name: trained_model,   type: String,  default: './model_output/ECOD_trained_model.joblib', description: 'Path to the saved trained model file'}
+
+implementation:
+  container:
+    image: waleriank/pyod_trainer:1
+    command: ['python']
+    args: [
+      'train_anom_model.py',
+      --input-data,  {inputValue: input_data},
+      --embedding-model,  {inputValue: embedding_model},
+      --pyod-model,  {inputValue: pyod_model},
+      --output-dir,  {inputValue: output_dir}
+    ]
