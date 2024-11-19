@@ -12,7 +12,7 @@ outputs:
 
 implementation:
   container:
-    image: waleriank/pyod:latest
+    image: waleriank/pyod:1
     command: [python]
     args: [
       'anomaly_detection.py',
