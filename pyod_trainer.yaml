@@ -15,16 +15,16 @@ inputs:
   - name: pyod_model
     type: String
     default: 'ECOD'
-    description: 'PyOD model to use (e.g., OCSVM, KDE, KNN, ECOD, LUNAR, DIF, SO_GAAL, AnoGAN)'
+    description: 'PyOD model to use (e.g., ECOD)'
 
 outputs:
   - name: trained_model
     type: File
-    description: 'Saved trained model file'
+    description: 'Path to the saved trained model file'
 
 implementation:
   container:
-    image: waleriank/pyod_trainer:4
+    image: waleriank/pyod_trainer:8
     command: 
       - 'python'
     args:
@@ -35,3 +35,5 @@ implementation:
       - '{inputValue: embedding_model}'
       - '--pyod-model'
       - '{inputValue: pyod_model}'
+      - '--output-path'
+      - '{outputPath: trained_model}'
