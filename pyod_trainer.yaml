@@ -8,7 +8,7 @@ inputs:
   - {name: output_dir,      type: String,  default: './model_output',          description: 'Directory to save the trained model'}
 
 outputs:
-  - {name: trained_model,   type: String,  default: './model_output/ECOD_trained_model.joblib', description: 'Path to the saved trained model file'}
+  - {name: trained_model,   type: String, description: 'Path to the saved trained model file'}
 
 implementation:
   container:
