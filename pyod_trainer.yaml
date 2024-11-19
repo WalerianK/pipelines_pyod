@@ -4,7 +4,7 @@ description: Train a PyOD anomaly detection model on text data using Sentence Tr
 inputs:
   - name: input_data
     type: String
-    default: 'data/combined_sentences.csv'
+    default: 'https://raw.githubusercontent.com/WalerianK/pipelines_pyod/refs/heads/main/combined_sentences.csv'
     description: 'Path to input data file (.csv, .parquet, .json) or a URL pointing to such a file'
   
   - name: embedding_model
