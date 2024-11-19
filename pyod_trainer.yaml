@@ -13,7 +13,7 @@ outputs:
 
 implementation:
   container:
-    image: waleriank/pyod:latest
+    image: waleriank/pyod_trainer:2
     command: ['python']
     args: [
       'train_anom_model.py',
