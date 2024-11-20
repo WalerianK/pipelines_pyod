@@ -6,14 +6,17 @@ inputs:
   - {name: pyod_model, type: String, default: 'ECOD', description: 'PyOD model to use (e.g., ECOD)'}
 outputs:
   - {name: trained_final_model, type: File, description: 'Path to the saved trained model file'}
+  - {name: metadata, type: String, description: 'Metadata including dataset statistics and features'}
+
 implementation:
   container:
-    image: waleriank/pyod_trainer:11
+    image: waleriank/pyod_trainer:12
     command: ["python3"]
     args: [
       -u , train_anom_model.py,
       "--input-data", {inputValue: input_data},
       "--embedding-model", {inputValue: embedding_model},
       "--pyod-model", {inputValue: pyod_model},
-      "--output-path", {outputPath: trained_final_model}
+      "--output-paths", {outputPath: trained_final_model},
+      {outputPath: metadata}
     ]
