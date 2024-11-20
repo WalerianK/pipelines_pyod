@@ -1,39 +1,19 @@
 name: PyOD Model Training Component
 description: Train a PyOD anomaly detection model on text data using Sentence Transformer embeddings.
-
 inputs:
-  - name: input_data
-    type: String
-    default: 'https://raw.githubusercontent.com/WalerianK/pipelines_pyod/refs/heads/main/combined_sentences.csv'
-    description: 'Path to input data file (.csv, .parquet, .json) or a URL pointing to such a file'
-  
-  - name: embedding_model
-    type: String
-    default: 'intfloat/e5-large-v2'
-    description: 'Sentence Transformer embedding model to use'
-  
-  - name: pyod_model
-    type: String
-    default: 'ECOD'
-    description: 'PyOD model to use (e.g., ECOD)'
-
+  - {name: input_data, type: String, default: 'https://raw.githubusercontent.com/WalerianK/pipelines_pyod/refs/heads/main/combined_sentences.csv', description: 'Path to input data file (.csv, .parquet, .json) or a URL pointing to such a file'}
+  - {name: embedding_model, type: String, default: 'intfloat/e5-large-v2', description: 'Sentence Transformer embedding model to use'}
+  - {name: pyod_model, type: String, default: 'ECOD', description: 'PyOD model to use (e.g., ECOD)'}
 outputs:
-  - name: trained_model
-    type: File
-    description: 'Path to the saved trained model file'
-
+  - {name: trained_final_model, type: File, description: 'Path to the saved trained model file'}
 implementation:
   container:
-    image: waleriank/pyod_trainer:10
-    command: 
-      - 'python'
-    args:
-      - 'train_anom_model.py'
-      - '--input-data'
-      - '{inputValue: input_data}'
-      - '--embedding-model'
-      - '{inputValue: embedding_model}'
-      - '--pyod-model'
-      - '{inputValue: pyod_model}'
-      - '--output-path'
-      - '{outputPath: trained_model}'
+    image: waleriank/pyod_trainer:11
+    command: ["python3"]
+    args: [
+      -u , train_anom_model.py,
+      "--input-data", {inputValue: input_data},
+      "--embedding-model", {inputValue: embedding_model},
+      "--pyod-model", {inputValue: pyod_model},
+      "--output-path", {outputPath: trained_final_model}
+    ]
