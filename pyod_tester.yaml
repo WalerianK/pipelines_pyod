@@ -1,7 +1,7 @@
 name: PyOD Model Testing Component
 description: Test a trained PyOD anomaly detection model on new text data and save results to JSON files.
 inputs:
-  - {name: input_data, type: String, default: 'https://raw.githubusercontent.com/WalerianK/pipelines_pyod/refs/heads/main/test_data.parquet', description: 'Path to input data file (.csv, .parquet, .json) or a URL pointing to such a file'}
+  - {name: input_data, type: String, default: 'https://raw.githubusercontent.com/WalerianK/pipelines_pyod/refs/heads/main/test_data.csv', description: 'Path to input data file (.csv, .parquet, .json) or a URL pointing to such a file'}
   - {name: model_file, type: File, description: 'Path to the saved PyOD model file (.joblib)'}
   - {name: model_cache_dir, type: String, default: '', description: 'Optional path to cached embedding model directory'}
 outputs:
