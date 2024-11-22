@@ -10,7 +10,7 @@ outputs:
 
 implementation:
   container:
-    image: waleriank/pyod_tester_new:latest
+    image: waleriank/pyod_tester_new:1
     command: ["python3"]
     args: [
       -u, test_anom_new_model.py,
