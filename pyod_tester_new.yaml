@@ -16,7 +16,7 @@ implementation:
       -u, test_anom_new_model.py,
       "--input-data", {inputValue: input_data},
       "--model-file", {inputPath: model_file},
-      "--threshold-model", {inputPath: threshold_model},
+      "--threshold-model", {inputValue: threshold_model},
       "--output-paths", {outputPath: anomalies}, {outputPath: metadata}
     ]
 
