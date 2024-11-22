@@ -1,0 +1,22 @@
+name: PyOD Model Testing New Component
+description: Test a trained PyOD anomaly detection model on new text data and save results to JSON files.
+inputs:
+  - {name: input_data, type: String, default: 'https://raw.githubusercontent.com/WalerianK/pipelines_pyod/refs/heads/main/test_data.csv', description: 'Path to input data file (.csv, .parquet, .json) or a URL pointing to such a file'}
+  - {name: model_file, type: File, description: 'Path to the saved PyOD model file (.joblib)'}
+  - {name: threshold_model, type: String, default: 'MIXMOD', description: 'Thresholding model to be used.'}
+outputs:
+  - {name: anomalies, type: File, description: 'Path to the JSON file containing detected anomalies'}
+  - {name: metadata, type: File, description: 'Path to the JSON file containing metadata about the test process'}
+
+implementation:
+  container:
+    image: waleriank/pyod_tester_new:latest
+    command: ["python3"]
+    args: [
+      -u, test_anom_new_model.py,
+      "--input-data", {inputValue: input_data},
+      "--model-file", {inputPath: model_file},
+      "--threshold-model", {inputPath: threshold_model},
+      "--output-paths", {outputPath: anomalies}, {outputPath: metadata}
+    ]
+
