@@ -5,8 +5,8 @@ inputs:
   - {name: combination, type: String, default: 'average', description: 'type of combination method'}
 outputs:
   - {name: trained_final_ensemble_model, type: File, description: 'Path to the saved trained ensemble model file'}
-  - {name: metadata, type: File, description: 'Metadata including dataset statistics and features'}
-  - {name: anomalies, type: File, description: 'Path to the JSON file containing detected anomalies'}
+  - {name: metadata, type: String, description: 'Metadata including dataset statistics and features'}
+  - {name: anomalies, type: String, description: 'Path to the JSON file containing detected anomalies'}
 
 implementation:
   container:
