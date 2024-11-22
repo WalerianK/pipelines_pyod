@@ -5,8 +5,8 @@ inputs:
   - {name: model_file, type: File, description: 'Path to the saved PyOD model file (.joblib)'}
   - {name: threshold_model, type: String, default: 'MIXMOD', description: 'Thresholding model to be used.'}
 outputs:
-  - {name: anomalies, type: String, description: 'Path to the JSON file containing detected anomalies'}
-  - {name: metadata, type: String, description: 'Path to the JSON file containing metadata about the test process'}
+  - {name: anomalies, type: File, description: 'Path to the JSON file containing detected anomalies'}
+  - {name: metadata, type: File, description: 'Path to the JSON file containing metadata about the test process'}
 
 implementation:
   container:
@@ -17,6 +17,7 @@ implementation:
       "--input-data", {inputValue: input_data},
       "--model-file", {inputPath: model_file},
       "--threshold-model", {inputValue: threshold_model},
-      "--output-paths", {outputPath: anomalies}, {outputPath: metadata}
+      "--output-paths", {outputPath: anomalies}, 
+      {outputPath: metadata}
     ]
 
