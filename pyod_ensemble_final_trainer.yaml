@@ -10,7 +10,7 @@ outputs:
 
 implementation:
   container:
-    image: waleriank/pyod_trainer:3
+    image: waleriank/pyod_trainer:4
     command: ["python3"]
     args: [
       -u , train_ensemble_anom_model.py,
