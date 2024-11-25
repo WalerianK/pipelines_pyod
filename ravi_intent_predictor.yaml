@@ -21,10 +21,7 @@ implementation:
       "--input", {inputPath: input_data},
       "--input-type", {inputValue: input_type},
       "--text-column", {inputValue: text_column},
-      "--model-file", {inputPath: model_artifacts}/model.joblib,
-      {ifPresent: intent_mapping, then: [
-        "--label-mapping", {inputPath: intent_mapping}
-      ]},
+      "--model-file", {inputPath: model_artifacts},
       "--output-paths",
       {outputPath: predictions_file},
       {outputPath: metrics_file}
