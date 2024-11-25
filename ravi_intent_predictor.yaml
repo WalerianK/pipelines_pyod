@@ -1,0 +1,47 @@
+name: Intent Predictor Component
+description: Component for predicting intents using trained BERT model and handling external label mappings
+
+inputs:
+  - {name: input_data, type: Dataset, description: "Input data for prediction (from Data Loader Component)"}
+  - {name: model_artifacts, type: Directory, description: "Model directory containing model.joblib and config files"}
+  - {name: intent_mapping, type: JsonObject, optional: true, description: "Intent mapping file from Text Preprocessor"}
+  - {name: input_type, type: String, default: "file", description: "Type of input (text or file)"}
+  - {name: text_column, type: String, default: "processed_text", description: "Name of text column in input data"}
+
+outputs:
+  - {name: predictions_file, type: JsonObject, description: "JSON file containing detailed predictions"}
+  - {name: metrics_file, type: JsonObject, description: "JSON file containing prediction metrics and statistics"}
+
+metadata:
+  annotations:
+    platform: Kubeflow
+    author: "Your Name"
+    version: "1.0.0"
+    component_type: "predictor"
+
+implementation:
+  container:
+    # Replace with your actual image repository
+    image: waleriank/ravi_predictor:revised
+    command: ["python"]
+    args: [
+      -u, predictor.py,
+      
+      # Input data handling
+      "--input", {inputPath: input_data},
+      "--input-type", {inputValue: input_type},
+      "--text-column", {inputValue: text_column},
+      
+      # Model and mapping files
+      "--model-file", {inputPath: model_artifacts}/model.joblib,
+      
+      # Optional label mapping
+      {ifPresent: intent_mapping, then: [
+        "--label-mapping", {inputPath: intent_mapping}
+      ]},
+      
+      # Output paths
+      "--output-paths",
+      {outputPath: predictions_file},
+      {outputPath: metrics_file}
+    ]
