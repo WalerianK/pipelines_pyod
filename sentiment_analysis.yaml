@@ -12,6 +12,6 @@ implementation:
     command: ["python3"]
     args: [
       "-u", "sentiment_analysis.py",
-      "--input-data", {inputValue: input_data},
+      "--input-data", {inputPath: input_data},
       "--output-path", {outputPath: sentiment_results}
     ]
