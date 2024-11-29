@@ -15,5 +15,5 @@ implementation:
     args: [
       "-u", "sentiment_analysis.py",
       "--input-data", {inputValue: input_data},
-      "--output-path", {outputPath: output_path}
+      "--output-path", {outputPath: sentiment_results}, {outputPath: metadata}
     ]
