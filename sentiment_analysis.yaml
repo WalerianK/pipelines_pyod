@@ -1,7 +1,7 @@
 name: Sentiment Analysis Component
 description: Perform sentiment analysis on text data using a pre-trained Hugging Face model and save the results to a JSON file.
 inputs:
-  - {name: input_data, type: Directory, description: 'Path to input data file (.csv, .parquet, .json) or a URL pointing to such a file'}
+  - {name: input_data, type: File, description: 'Path to input data file (.csv, .parquet, .json) or a URL pointing to such a file'}
   - {name: output_path, type: String, default: 'sentiment_results.json', description: 'Path to save the output sentiment data JSON'}
 
 outputs:
