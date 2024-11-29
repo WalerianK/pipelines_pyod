@@ -1,0 +1,49 @@
+text,sentiment_org
+"I absolutely love this!",Positive
+"This is the worst day of my life.",Negative
+"The food was amazing and so delicious.",Positive
+"I can't believe how bad the service was.",Negative
+"This product exceeded my expectations.",Positive
+"I'm so disappointed with this purchase.",Negative
+"The movie was a masterpiece.",Positive
+"It was a complete waste of time.",Negative
+"I feel fantastic today!",Positive
+"I'm really upset about what happened.",Negative
+"The hotel room was clean and comfortable.",Positive
+"I regret booking that terrible hotel.",Negative
+"Thank you for your incredible support!",Positive
+"I wish I had never trusted them.",Negative
+"The concert was an unforgettable experience.",Positive
+"I wouldn't recommend this to anyone.",Negative
+"My day has been absolutely wonderful.",Positive
+"This is so frustrating and annoying.",Negative
+"I'm so proud of what we've achieved.",Positive
+"This decision makes no sense at all.",Negative
+"Everything about the trip was perfect.",Positive
+"This is a disaster and I'm so angry.",Negative
+"I love spending time with my family.",Positive
+"I can't stand this nonsense anymore.",Negative
+"The sunset over the beach was breathtaking.",Positive
+"The traffic jam ruined my entire day.",Negative
+"I'm thrilled with how the project turned out.",Positive
+"I feel so let down right now.",Negative
+"The packaging was so beautiful and thoughtful.",Positive
+"The item arrived broken and useless.",Negative
+"This is exactly what I was looking for.",Positive
+"I regret buying this; it's awful.",Negative
+"I'm so happy to hear the good news!",Positive
+"This is unacceptable and I won't tolerate it.",Negative
+"The staff were kind and very helpful.",Positive
+"The behavior of the manager was horrible.",Negative
+"The kids loved the amusement park.",Positive
+"The weather completely ruined the trip.",Negative
+"I'm delighted by the outcome of the meeting.",Positive
+"This makes me so angry and disappointed.",Negative
+"Walking through the forest was so peaceful.",Positive
+"The loud noises were unbearable.",Negative
+"I am grateful for all the support I received.",Positive
+"I don't think I can take this anymore.",Negative
+"The artwork in the gallery was inspiring.",Positive
+"The performance was dreadful and boring.",Negative
+"My experience here was fantastic!",Positive
+"I'll never come back here again.",Negative
