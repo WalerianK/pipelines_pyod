@@ -1,0 +1,19 @@
+name: Sentiment Analysis Component
+description: Perform sentiment analysis on text data using a pre-trained Hugging Face model and save the results to a JSON file.
+inputs:
+  - {name: input_data, type: String, description: 'Path to input data file (.csv, .parquet, .json) or a URL pointing to such a file'}
+  - {name: output_path, type: String, default: 'sentiment_results.json', description: 'Path to save the output sentiment data JSON'}
+
+outputs:
+  - {name: sentiment_results, type: String, description: 'JSON file containing the input text and its corresponding sentiment label'}
+  - {name: metadata, type: String, description: 'Metadata including model name and input data statistics'}
+
+implementation:
+  container:
+    image: waleriank/sentiment_emotion:1
+    command: ["python3"]
+    args: [
+      "-u", "sentiment_analysis.py",
+      "--input-data", {inputValue: input_data},
+      "--output-path", {outputPath: output_path}
+    ]
