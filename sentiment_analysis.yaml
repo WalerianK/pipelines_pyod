@@ -6,8 +6,6 @@ inputs:
 
 outputs:
   - {name: sentiment_results, type: String, description: 'JSON file containing the input text and its corresponding sentiment label'}
-  - {name: metadata, type: String, description: 'Metadata including model name and input data statistics'}
-
 implementation:
   container:
     image: waleriank/sentiment_emotion:1
@@ -15,5 +13,5 @@ implementation:
     args: [
       "-u", "sentiment_analysis.py",
       "--input-data", {inputValue: input_data},
-      "--output-path", {outputPath: sentiment_results}, {outputPath: metadata}
+      "--output-path", {outputPath: sentiment_results}
     ]
