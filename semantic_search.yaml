@@ -1,0 +1,22 @@
+name: ChromaDB Query Component
+description: Process text and image data to query ChromaDB multimodal collections and save results to JSON.
+inputs:
+  - {name: text_file, type: String, description: 'Path to the CSV file containing text data or a URL pointing to it.'}
+  - {name: image_file, type: String, description: 'Path to the CSV file containing image URLs or a URL pointing to it.'}
+  - {name: query_text, type: String, description: 'Text query for searching the ChromaDB collections.'}
+  - {name: n_results, type: Integer, default: 5, description: 'Number of results to retrieve from the collections.'}
+outputs:
+  - {name: output_result, type: File, description: 'Path to the JSON file containing query results.'}
+
+implementation:
+  container:
+    image: waleriank/semantic:1
+    command: ["python3"]
+    args: [
+      -u, semantic_final.py,
+      "--text_file", {inputValue: text_file},
+      "--image_file", {inputValue: image_file},
+      "--query_text", {inputValue: query_text},
+      "--n_results", {inputValue: n_results},
+      "--output_path", {outputPath: output_result}
+    ]
