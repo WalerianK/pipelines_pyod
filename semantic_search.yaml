@@ -10,7 +10,7 @@ outputs:
 
 implementation:
   container:
-    image: waleriank/semantic:3
+    image: waleriank/semantic:4
     command: ["python3"]
     args: [
       -u, semantic_final.py,
