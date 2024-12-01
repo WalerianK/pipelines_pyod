@@ -4,7 +4,7 @@ inputs:
   - {name: input_data, type: String, description: 'Path to input data file (.csv, .parquet, .json) or a URL pointing to such a file'}
   - {name: output_path, type: String, default: 'sentiment_results.json', description: 'Path to save the output sentiment data JSON'}
 outputs:
-  - {name: sentiment_results, type: String, description: 'JSON file containing the input text and its corresponding sentiment label'}
+  - {name: sentiment_results, type: File, description: 'JSON file containing the input text and its corresponding sentiment label'}
 
 implementation:
   container:
