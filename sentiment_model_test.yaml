@@ -4,7 +4,7 @@ description: Perform sentiment analysis on a given sentence and save the model.
 inputs:
   - {name: input_sent, type: String, description: 'Input sentence for sentiment analysis'}
 outputs:
-  - {name: output_path, description: 'Path to save the serialized model'}
+  - {name: output_path, type: Directory, description: 'Path to save the serialized model'}
 
 implementation:
   container:
