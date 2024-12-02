@@ -8,7 +8,7 @@ outputs:
 
 implementation:
   container:
-    image: waleriank/sentiment_test:1 
+    image: waleriank/sentiment_test:2
     command: ["python3"]
     args: [
       -u, see.py,
