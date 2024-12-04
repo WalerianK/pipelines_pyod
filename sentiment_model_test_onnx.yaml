@@ -1,17 +1,17 @@
-name: Sentiment Analysis Pipeline
+name: Sentiment Analysis Pipeline ONNX
 description: Perform sentiment analysis on a given sentence and save the model.
 
 inputs:
   - {name: input_sent, type: String, description: 'Input sentence for sentiment analysis'}
 outputs:
-  - {name: output_path, description: 'Path to save the serialized model'}
+  - {name: output_path, type: File, description: 'Path to save the serialized model'}
 
 implementation:
   container:
-    image: waleriank/sentiment_test:2
+    image: waleriank/sentiment_test:3
     command: ["python3"]
     args: [
-      -u, see.py,
+      -u, see1.py,
       "--input_sent", {inputValue: input_sent},
       "--output_path", {outputPath: output_path}
     ]
