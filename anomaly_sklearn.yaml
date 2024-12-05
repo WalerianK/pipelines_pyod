@@ -2,7 +2,8 @@ name: PyOD Ensemble Model Training Component sklearn
 description: Train a anomaly detection ensemble model on text data using Sentence Transformer embeddings and save in sklearn format.
 inputs:
   - {name: input_data, type: String, default: 'https://raw.githubusercontent.com/WalerianK/pipelines_pyod/refs/heads/main/combined_sentences.csv', description: 'Path to input data file (.csv, .parquet, .json) or a URL pointing to such a file'}
-
+  - {name: n_estimators, type: Integer, description: 'Path to the saved trained ensemble model file'}
+  
 outputs:
   - {name: trained_final_ensemble_model_sklearn, type: File, description: 'Path to the saved trained ensemble model file'}
   - {name: metadata, type: String, description: 'Metadata including dataset statistics and features'}
@@ -15,6 +16,7 @@ implementation:
     args: [
       -u , anomaly_scikit_learn.py,
       "--input-data", {inputValue: input_data},
+      "--n-estimators" {inputValue: n_estimators},
       "--output-paths", {outputPath: trained_final_ensemble_model_sklearn},
       {outputPath: metadata},
       {outputPath: anomalies}
