@@ -9,7 +9,7 @@ outputs:
 
 implementation:
   container:
-    image: waleriank/anomaly_sklearn:2
+    image: waleriank/anomaly_sklearn:3
     command: ["python3"]
     args: [
       -u , anomaly_scikit_learn.py,
