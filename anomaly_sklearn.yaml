@@ -6,8 +6,6 @@ inputs:
   
 outputs:
   - {name: trained_final_ensemble_model_sklearn, type: Directory, description: 'Path to the saved trained ensemble model file'}
-  - {name: metadata, type: String, description: 'Metadata including dataset statistics and features'}
-  - {name: anomalies, type: String, description: 'Path to the JSON file containing detected anomalies'}
 
 implementation:
   container:
@@ -17,7 +15,5 @@ implementation:
       -u , anomaly_scikit_learn.py,
       "--input-data", {inputValue: input_data},
       "--n-estimators", {inputValue: n_estimators},
-      "--output-paths", {outputPath: trained_final_ensemble_model_sklearn},
-      {outputPath: metadata},
-      {outputPath: anomalies}
+      "--output-dir", {outputPath: trained_final_ensemble_model_sklearn}
     ]
