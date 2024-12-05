@@ -1,0 +1,21 @@
+name: PyOD Ensemble Model Training Component ONNX
+description: Train a PyOD anomaly detection ensemble model on text data using Sentence Transformer embeddings and save in ONNX format.
+inputs:
+  - {name: input_data, type: String, default: 'https://raw.githubusercontent.com/WalerianK/pipelines_pyod/refs/heads/main/combined_sentences.csv', description: 'Path to input data file (.csv, .parquet, .json) or a URL pointing to such a file'}
+
+outputs:
+  - {name: trained_final_ensemble_model_onnx, type: File, description: 'Path to the saved trained ensemble model file'}
+  - {name: metadata, type: String, description: 'Metadata including dataset statistics and features'}
+  - {name: anomalies, type: String, description: 'Path to the JSON file containing detected anomalies'}
+
+implementation:
+  container:
+    image: waleriank/anomaly_onnx:3
+    command: ["python3"]
+    args: [
+      -u , anomaly_onnx.py,
+      "--input-data", {inputValue: input_data},
+      "--output-paths", {outputPath: trained_final_ensemble_model_onnx},
+      {outputPath: metadata},
+      {outputPath: anomalies}
+    ]
