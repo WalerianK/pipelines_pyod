@@ -5,7 +5,7 @@ inputs:
   - {name: n_estimators, type: Integer, description: 'Path to the saved trained ensemble model file'}
   
 outputs:
-  - {name: trained_final_ensemble_model_sklearn, type: File, description: 'Path to the saved trained ensemble model file'}
+  - {name: trained_final_ensemble_model_sklearn, type: Directory, description: 'Path to the saved trained ensemble model file'}
   - {name: metadata, type: String, description: 'Metadata including dataset statistics and features'}
   - {name: anomalies, type: String, description: 'Path to the JSON file containing detected anomalies'}
 
