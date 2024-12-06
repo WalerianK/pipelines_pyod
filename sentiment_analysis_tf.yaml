@@ -12,5 +12,5 @@ implementation:
     args: [
       -u, emotions_tf.py,
       "--input_sent", {inputValue: input_sent},
-      "--output_dir", {inputValue: output_dir}
+      "--output_dir", {outputPath: output_dir}
     ]
