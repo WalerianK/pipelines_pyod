@@ -5,13 +5,12 @@ inputs:
   - {name: output_dir, type: String, description: 'Directory to save the serialized model'} 
 outputs:
   - {name: model_output, type: Directory, description: 'Directory containing the saved model'}
-
 implementation:
   container:
-    image: waleriank/sentiment_tf:1
+    image: ravidocker189/prasanth_sentiment:1
     command: ["python3"]
     args: [
-      -u, emotions_tf.py,
+      -u, emotions_tf.py
       "--input_sent", {inputValue: input_sent},
       "--output_dir", {inputValue: output_dir},
       "--model_output", {outputPath: model_output}
