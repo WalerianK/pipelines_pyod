@@ -2,8 +2,6 @@ name: TensorFlow Sentiment Analysis and Model Saving Component
 description: Perform sentiment analysis using a Transformer-based model and save model weights (.h5) and configuration (config.json) in separate directories.
 inputs:
   - {name: input_sent, type: String, description: 'Input sentence for sentiment analysis'}
-  - {name: output_model_dir, type: String, description: 'Directory to save the model weights as a .h5 file'}
-  - {name: output_config_dir, type: String, description: 'Directory to save the model configuration as a config.json file'}
 
 outputs:
   - {name: output_model_dir, type: Directory, description: 'Path to the saved model weights (.h5)'}
