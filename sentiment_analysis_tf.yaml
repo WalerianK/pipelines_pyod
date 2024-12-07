@@ -2,16 +2,14 @@ name: Sentiment Analysis Pipeline Tensorflow
 description: Perform sentiment analysis on a given sentence and save the model.
 inputs:
   - {name: input_sent, type: String, description: 'Input sentence for sentiment analysis'}
-  - {name: output_dir, type: String, description: 'Directory to save the serialized model'} 
 outputs:
-  - {name: model_output, type: Directory, description: 'Directory containing the saved model'}
+  - {name: output_dir, type: Directory, description: 'Directory to save the serialized model'} 
 implementation:
   container:
-    image: ravidocker189/prasanth_sentiment:1
+    image: waleriank/sentiment_tf:new
     command: ["python3"]
     args: [
       -u, emotions_tf.py
       "--input_sent", {inputValue: input_sent},
-      "--output_dir", {inputValue: output_dir},
-      "--model_output", {outputPath: model_output}
+      "--output_dir", {outputPath: output_dir}
     ]
