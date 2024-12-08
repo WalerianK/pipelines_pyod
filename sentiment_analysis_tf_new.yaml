@@ -9,10 +9,10 @@ outputs:
 
 implementation:
   container:
-    image: waleriank/sentiment_tf:newer
+    image: waleriank/sentiment_tf:newer1
     command: ["python3"]
     args: [
-      -u, save_model_component.py,
+      -u, emotions_tf.py,
       "--input_sent", {inputValue: input_sent},
       "--output_model_dir", {outputPath: output_model_dir},
       "--output_config_dir", {outputPath: output_config_dir}
