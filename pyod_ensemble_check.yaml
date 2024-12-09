@@ -1,0 +1,22 @@
+name: PyOD Ensemble Model Training Component check
+description: Train a PyOD anomaly detection ensemble model on text data using Sentence Transformer embeddings.
+inputs:
+  - {name: input_data, type: String, default: 'https://raw.githubusercontent.com/WalerianK/pipelines_pyod/refs/heads/main/combined_sentences.csv', description: 'Path to input data file (.csv, .parquet, .json) or a URL pointing to such a file'}
+  - {name: combination, type: String, default: 'majority', description: 'type of combination method'}
+outputs:
+  - {name: trained_final_ensemble_model, type: Directory, description: 'Path to the saved trained ensemble model file'}
+  - {name: metadata, type: Directory, description: 'Metadata including dataset statistics and features'}
+  - {name: anomalies, type: Directory, description: 'Path to the JSON file containing detected anomalies'}
+
+implementation:
+  container:
+    image: waleriank/pyod_train:1
+    command: ["python3"]
+    args: [
+      -u , train_ensemble_anom_model.py,
+      "--input-data", {inputValue: input_data},
+      "--combination", {inputValue: combination},
+      "--output_model_dir", {outputPath: trained_final_ensemble_model},
+      "--output_metadata_dir", {outputPath: metadata},
+      "--output_anomaly_dir", {outputPath: anomalies}
+    ]
